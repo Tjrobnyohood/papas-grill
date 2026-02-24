@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papa's Charcoal Grille | Interactive Menu</title>
+    <title>Papa's Charcoal Grille | Full Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,14 +15,15 @@
     </header>
 
     <div class="menu-wrapper">
-        <main id="menu-container">
-            </main>
+        <main id="menu-container"></main>
 
         <section class="cart-footer">
-            <div class="calc-row">Subtotal: <span id="subtotal">$0.00</span></div>
-            <div class="calc-row">Tax (9.25%): <span id="tax">$0.00</span></div>
-            <div class="total-row">Total: <span id="total">$0.00</span></div>
-            <button class="order-btn" onclick="alert('Sent to the Grill!')">Submit Order</button>
+            <div class="calc-box">
+                <div class="calc-row">Subtotal: <span id="subtotal">$0.00</span></div>
+                <div class="calc-row">Maysville Tax (9.25%): <span id="tax">$0.00</span></div>
+                <div class="total-row">Total: <span id="total">$0.00</span></div>
+                <button class="order-btn">Submit Order to Grill</button>
+            </div>
         </section>
     </div>
 
@@ -39,19 +40,19 @@ const menuData = [
         { name: "Ranch Burger", price: 6.49 }, { name: "Chili Cheeseburger", price: 8.19 },
         { name: "Chicken Wrap", price: 6.99 }, { name: "Crispy Chicken Sandwich", price: 6.99 },
         { name: "Grilled Chicken Sandwich", price: 6.99 }, { name: "Grilled Cheese", price: 3.99 },
-        { name: "BLT", price: 5.49 }, { name: "Steak Sandwich", price: 8.19 }
-    ]},
-    { category: "Extras & Add-ons", items: [
-        { name: "Biscuit", price: 2.19 }, { name: "Gravy", price: 1.69 }, { name: "Jalapenos", price: 0.89 },
-        { name: "Cheese", price: 0.89 }, { name: "Chili", price: 1.19 }, { name: "Bacon", price: 1.99 },
-        { name: "Grilled Chicken", price: 2.19 }, { name: "Beef Patty", price: 2.99 }
+        { name: "BLT", price: 5.49, desc: "Bacon, Mayo, Lettuce, Tomato" }, { name: "Steak Sandwich", price: 8.19 }
     ]},
     { category: "Other Stuff", items: [
-        { name: "Chicken Fry Dinner", price: 10.99, desc: "w/ Fries, Tots, or Okra" },
-        { name: "Chicken Strips (5pc)", price: 7.79 }, { name: "Popcorn Chicken", price: 5.99 },
-        { name: "Burrito Meal", price: 6.99 }, { name: "Double Burrito Meal", price: 9.19 },
-        { name: "Mexican Delight", price: 8.19 }, { name: "Frito Chili Pie", price: 6.99 },
-        { name: "Chili Bowl", price: 5.49 }, { name: "Spicy Cheese Curds", price: 4.99 }
+        { name: "Chicken Fry Dinner", price: 10.99, desc: "Served w/ Fries, Tots, or Okra" },
+        { name: "Chicken Strips (5 pc)", price: 7.79 },
+        { name: "Popcorn Chicken", price: 5.99 },
+        { name: "Chicken Quesadilla", price: 6.49 },
+        { name: "Burrito Meal", price: 6.99 },
+        { name: "Double Burrito Meal", price: 9.19 },
+        { name: "Mexican Delight", price: 8.19 },
+        { name: "Frito Chili Pie", price: 6.99 },
+        { name: "Chili Bowl", price: 5.49 },
+        { name: "Spicy Cheese Curds", price: 4.99 }
     ]},
     { category: "Sides", items: [
         { name: "French Fries", price: 3.59 }, { name: "Tater Tots", price: 3.59 },
@@ -60,7 +61,15 @@ const menuData = [
         { name: "Chili Cheese Fries", price: 6.49 }, { name: "Chicken Cheese Fries", price: 7.49 },
         { name: "Chicken Chili Cheese Fries", price: 9.99 }
     ]},
-    { category: "Drinks", items: [ { name: "Soft Drinks & Iced Tea", price: 2.99 } ]}
+    { category: "Extras", items: [
+        { name: "Biscuit", price: 2.19 }, { name: "Gravy", price: 1.69 },
+        { name: "Jalapenos", price: 0.89 }, { name: "Cheese", price: 0.89 },
+        { name: "Chili", price: 1.19 }, { name: "Bacon", price: 1.99 },
+        { name: "Grilled Chicken (Add-on)", price: 2.19 }, { name: "Beef Patty (Add-on)", price: 2.99 }
+    ]},
+    { category: "Drinks", items: [
+        { name: "Soft Drinks & Iced Tea", price: 2.99 }
+    ]}
 ];
 
 let cart = {};
@@ -68,26 +77,26 @@ const TAX_RATE = 0.0925;
 
 function renderMenu() {
     const container = document.getElementById('menu-container');
-    menuData.forEach(sec => {
-        // This wraps each category in a Hero-style card
-        let html = `<div class="category-hero-card">
-                        <h2 class="section-cursive-italic">${sec.category}</h2>
-                        <div class="item-list">`;
+    menuData.forEach((sec, idx) => {
+        let html = `
+            <div class="hero-category-card" onclick="toggleCategory(${idx})">
+                <h2 class="italic-header">${sec.category} <span class="arrow">▼</span></h2>
+                <div class="item-list" id="list-${idx}" style="display: none;">`;
         
         sec.items.forEach(item => {
             const safeId = item.name.replace(/[^a-zA-Z0-9]/g, '');
             html += `
-                <div class="menu-item">
-                    <div class="item-details">
-                        <span class="item-name">${item.name}</span>
-                        ${item.desc ? `<p class="item-desc">${item.desc}</p>` : ''}
+                <div class="menu-item" onclick="event.stopPropagation()">
+                    <div class="item-info">
+                        <span class="name">${item.name}</span>
+                        ${item.desc ? `<p class="desc">${item.desc}</p>` : ''}
                     </div>
-                    <div class="item-actions">
+                    <div class="controls">
                         <span class="price">$${item.price.toFixed(2)}</span>
                         <div class="stepper">
-                            <button onclick="changeQty('${item.name}', -1, ${item.price})">-</button>
+                            <button onclick="updateQty('${item.name}', -1, ${item.price})">-</button>
                             <span id="qty-${safeId}">0</span>
-                            <button onclick="changeQty('${item.name}', 1, ${item.price})">+</button>
+                            <button onclick="updateQty('${item.name}', 1, ${item.price})">+</button>
                         </div>
                     </div>
                 </div>`;
@@ -97,25 +106,26 @@ function renderMenu() {
     });
 }
 
-function changeQty(name, delta, price) {
-    const safeId = name.replace(/[^a-zA-Z0-9]/g, '');
-    cart[name] = (cart[name] || 0) + delta;
-    if (cart[name] < 0) cart[name] = 0;
-    document.getElementById(`qty-${safeId}`).innerText = cart[name];
-    calculate();
+function toggleCategory(idx) {
+    const list = document.getElementById(`list-${idx}`);
+    list.style.display = list.style.display === "none" ? "block" : "none";
 }
 
-function calculate() {
-    let subtotal = 0;
-    menuData.forEach(sec => {
-        sec.items.forEach(item => {
-            if (cart[item.name]) subtotal += cart[item.name] * item.price;
-        });
-    });
-    const tax = subtotal * TAX_RATE;
-    document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
-    document.getElementById('tax').innerText = `$${tax.toFixed(2)}`;
-    document.getElementById('total').innerText = `$${(subtotal + tax).toFixed(2)}`;
+function updateQty(name, delta, price) {
+    const id = name.replace(/[^a-zA-Z0-9]/g, '');
+    cart[name] = (cart[name] || 0) + delta;
+    if (cart[name] < 0) cart[name] = 0;
+    document.getElementById(`qty-${id}`).innerText = cart[name];
+    calc();
+}
+
+function calc() {
+    let sub = 0;
+    menuData.forEach(s => s.items.forEach(i => { if(cart[i.name]) sub += cart[i.name]*i.price; }));
+    let tx = sub * TAX_RATE;
+    document.getElementById('subtotal').innerText = `$${sub.toFixed(2)}`;
+    document.getElementById('tax').innerText = `$${tx.toFixed(2)}`;
+    document.getElementById('total').innerText = `$${(sub + tx).toFixed(2)}`;
 }
 
 renderMenu();
