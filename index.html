@@ -3,92 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papa's Famous Charcoal Hamburgers | Maysville Menu</title>
-    <meta name="description" content="Authentic charcoal-grilled hamburgers in Maysville, OK. Local flavor, flame-grilled perfection.">
+    <title>Menu | Papa's Famous Charcoal Hamburgers | Maysville, OK</title>
+    <meta name="description" content="Official menu for Papa's Famous Charcoal Hamburgers in Maysville. Order burgers, steaks, and sides online.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="header-container">
-            <a href="index.html" class="logo-link">
-                <img src="logo.svg" alt="Papa's Famous Logo" class="header-logo">
-                <span class="brand-text">PAPA'S</span>
+            <a href="#" class="logo-link">
+                <img src="logo.svg" alt="Papa's Logo" class="header-logo">
+                <span class="brand-name">PAPA'S</span>
             </a>
-            
-            <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <button class="menu-toggle" id="menuToggle">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </button>
-
             <nav class="nav-menu" id="navMenu">
-                <a href="#menu">The Grill</a>
-                <a href="#cart-section">Your Order</a>
-                <a href="#location">Location</a>
+                <a href="#sandwiches">Sandwiches</a>
+                <a href="#other-stuff">Other Stuff</a>
+                <a href="#sides">Sides</a>
+                <a href="#cart-section">View Order</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero-branding">
             <h1>Papa’s Famous</h1>
-            <div class="ribbon">
-                <h2>CHARCOAL HAMBURGERS</h2>
+            <div class="ribbon"><h2>CHARCOAL HAMBURGERS</h2></div>
+            <p class="phone-link">Call-in: <a href="tel:4058674880">405-867-4880</a></p>
+        </section>
+
+        <section id="sandwiches" class="menu-category">
+            <h3>Sandwiches</h3>
+            <div class="menu-grid">
+                <article class="menu-item" data-name="Hamburger" data-price="5.99">
+                    <div class="item-info"><h4>Hamburger</h4></div>
+                    <div class="item-actions"><span class="price">$5.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Ranch Burger" data-price="6.49">
+                    <div class="item-info"><h4>Ranch Burger</h4></div>
+                    <div class="item-actions"><span class="price">$6.49</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Cheeseburger" data-price="6.99">
+                    <div class="item-info"><h4>Cheeseburger</h4></div>
+                    <div class="item-actions"><span class="price">$6.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Double Bacon Cheeseburger" data-price="10.79">
+                    <div class="item-info"><h4>Double Bacon Cheeseburger</h4></div>
+                    <div class="item-actions"><span class="price">$10.79</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Steak Sandwich" data-price="8.19">
+                    <div class="item-info"><h4>Steak Sandwich</h4></div>
+                    <div class="item-actions"><span class="price">$8.19</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
             </div>
         </section>
 
-        <section id="menu" class="menu-list">
-            <article class="menu-item" data-name="Charcoal Classic" data-price="8.50">
-                <div class="item-info">
-                    <h3>The Classic</h3>
-                    <p>Original charcoal-fired beef patty.</p>
-                </div>
-                <div class="item-controls">
-                    <span class="price">$8.50</span>
-                    <div class="stepper">
-                        <button class="minus">-</button>
-                        <span class="qty">0</span>
-                        <button class="plus">+</button>
-                    </div>
-                </div>
-            </article>
+        <section id="other-stuff" class="menu-category">
+            <h3>Other Stuff</h3>
+            <div class="menu-grid">
+                <article class="menu-item" data-name="Frito Chili Pie" data-price="6.99">
+                    <div class="item-info"><h4>Frito Chili Pie</h4></div>
+                    <div class="item-actions"><span class="price">$6.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Chicken Fry Dinner" data-price="10.99">
+                    <div class="item-info"><h4>Chicken Fry Dinner</h4><p>w/ Fries, Tots, or Okra</p></div>
+                    <div class="item-actions"><span class="price">$10.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Spicy Cheese Curds" data-price="4.99">
+                    <div class="item-info"><h4>Spicy Cheese Curds</h4></div>
+                    <div class="item-actions"><span class="price">$4.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+            </div>
+        </section>
 
-            <article class="menu-item" data-name="Papa Burger" data-price="12.00">
-                <div class="item-info">
-                    <h3>The Papa Burger</h3>
-                    <p>Double meat, double cheese, flame-kissed.</p>
-                </div>
-                <div class="item-controls">
-                    <span class="price">$12.00</span>
-                    <div class="stepper">
-                        <button class="minus">-</button>
-                        <span class="qty">0</span>
-                        <button class="plus">+</button>
-                    </div>
-                </div>
-            </article>
+        <section id="sides" class="menu-category">
+            <h3>Sides</h3>
+            <div class="menu-grid">
+                <article class="menu-item" data-name="French Fries" data-price="3.59">
+                    <div class="item-info"><h4>French Fries</h4></div>
+                    <div class="item-actions"><span class="price">$3.59</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Texas Toothpick" data-price="4.99">
+                    <div class="item-info"><h4>Texas Toothpick</h4></div>
+                    <div class="item-actions"><span class="price">$4.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+                <article class="menu-item" data-name="Soft Drinks" data-price="2.99">
+                    <div class="item-info"><h4>Soft Drinks & Iced Tea</h4></div>
+                    <div class="item-actions"><span class="price">$2.99</span><div class="stepper"><button class="minus">-</button><span class="qty">0</span><button class="plus">+</button></div></div>
+                </article>
+            </div>
         </section>
 
         <section id="cart-section" class="cart-box">
             <h3>Order Summary</h3>
-            <div class="calc-line">Subtotal: <span id="subtotal">$0.00</span></div>
-            <div class="calc-line">Tax (Maysville 9.25%): <span id="tax-amount">$0.00</span></div>
-            <div class="total-line">Total: <span id="grand-total">$0.00</span></div>
-            <button class="order-btn">Submit Order to Grill</button>
+            <div id="cart-list"></div>
+            <div class="tax-line">Subtotal: <span id="subtotal">$0.00</span></div>
+            <div class="tax-line">Tax (Maysville 9.25%): <span id="tax">$0.00</span></div>
+            <div class="total-line">Total: <span id="total">$0.00</span></div>
+            <button class="checkout-btn">Submit Order</button>
         </section>
     </main>
 
     <script>
-        // MOBILE MENU TOGGLE
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        // CALCULATOR LOGIC
         const TAX_RATE = 0.0925;
         let cart = {};
 
+        // Hamburger Menu Logic
+        document.getElementById('menuToggle').onclick = () => {
+            document.getElementById('navMenu').classList.toggle('active');
+        };
+
+        // Cart Logic
         document.querySelectorAll('.menu-item').forEach(item => {
             const name = item.getAttribute('data-name');
             const price = parseFloat(item.getAttribute('data-price'));
@@ -96,30 +123,37 @@
 
             item.querySelector('.plus').onclick = () => {
                 cart[name] = (cart[name] || 0) + 1;
-                update();
+                qtyLabel.innerText = cart[name];
+                updateCart();
             };
 
             item.querySelector('.minus').onclick = () => {
-                if(cart[name] > 0) {
+                if (cart[name] > 0) {
                     cart[name]--;
-                    update();
+                    qtyLabel.innerText = cart[name];
+                    updateCart();
                 }
             };
-
-            function update() {
-                qtyLabel.innerText = cart[name] || 0;
-                let sub = 0;
-                Object.keys(cart).forEach(key => {
-                    const p = parseFloat(document.querySelector(`[data-name="${key}"]`).getAttribute('data-price'));
-                    sub += cart[key] * p;
-                });
-                
-                const tax = sub * TAX_RATE;
-                document.getElementById('subtotal').innerText = `$${sub.toFixed(2)}`;
-                document.getElementById('tax-amount').innerText = `$${tax.toFixed(2)}`;
-                document.getElementById('grand-total').innerText = `$${(sub + tax).toFixed(2)}`;
-            }
         });
+
+        function updateCart() {
+            let subtotal = 0;
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+            
+            Object.keys(cart).forEach(name => {
+                if(cart[name] > 0) {
+                    const price = parseFloat(document.querySelector(`[data-name="${name}"]`).getAttribute('data-price'));
+                    subtotal += cart[name] * price;
+                    cartList.innerHTML += `<p>${cart[name]}x ${name}</p>`;
+                }
+            });
+
+            const tax = subtotal * TAX_RATE;
+            document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax').innerText = `$${tax.toFixed(2)}`;
+            document.getElementById('total').innerText = `$${(subtotal + tax).toFixed(2)}`;
+        }
     </script>
 </body>
 </html>
