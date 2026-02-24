@@ -1,0 +1,104 @@
+@layer base, layout, components;
+
+@layer base {
+    :root {
+        --forest-green: #007a4d;
+        --flame-red: #d32f2f;
+        --cream: #fff9e6;
+        --dark: #1a1a1a;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding-top: 80px; /* Space for fixed header */
+        font-family: 'Arial Black', sans-serif;
+        background-color: #fdfdfd;
+        color: var(--dark);
+    }
+}
+
+@layer layout {
+    .main-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--forest-green);
+        border-bottom: 5px solid var(--flame-red);
+        z-index: 1000;
+        padding: 10px 0;
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        background: var(--forest-green);
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu.active { display: flex; }
+    .nav-menu a { color: white; padding: 20px; text-decoration: none; border-top: 1px solid #ffffff22; }
+}
+
+@layer components {
+    .header-logo { height: 50px; width: auto; }
+    .brand-text { color: white; margin-left: 10px; font-size: 1.5rem; }
+    
+    .hero {
+        text-align: center;
+        background: var(--forest-green);
+        padding: 60px 20px;
+        color: white;
+    }
+    h1 { font-size: 3.5rem; color: var(--flame-red); text-shadow: 2px 2px #fff; margin: 0; }
+    
+    .ribbon {
+        background: var(--cream);
+        color: var(--dark);
+        padding: 5px 20px;
+        display: inline-block;
+        transform: rotate(-2deg);
+        margin-top: 15px;
+    }
+
+    .menu-item {
+        display: flex;
+        justify-content: space-between;
+        background: white;
+        margin: 15px auto;
+        padding: 20px;
+        max-width: 600px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .stepper button {
+        background: var(--flame-red);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .cart-box {
+        background: var(--dark);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .total-line { font-size: 2rem; color: var(--flame-red); margin-top: 10px; }
+
+    .menu-toggle { background: none; border: none; cursor: pointer; }
+    .bar { display: block; width: 30px; height: 4px; background: white; margin: 6px; }
+}

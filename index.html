@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Famous Charcoal Hamburgers | Maysville Menu</title>
+    <meta name="description" content="Authentic charcoal-grilled hamburgers in Maysville, OK. Local flavor, flame-grilled perfection.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="logo.svg" alt="Papa's Famous Logo" class="header-logo">
+                <span class="brand-text">PAPA'S</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#menu">The Grill</a>
+                <a href="#cart-section">Your Order</a>
+                <a href="#location">Location</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Papa’s Famous</h1>
+            <div class="ribbon">
+                <h2>CHARCOAL HAMBURGERS</h2>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-list">
+            <article class="menu-item" data-name="Charcoal Classic" data-price="8.50">
+                <div class="item-info">
+                    <h3>The Classic</h3>
+                    <p>Original charcoal-fired beef patty.</p>
+                </div>
+                <div class="item-controls">
+                    <span class="price">$8.50</span>
+                    <div class="stepper">
+                        <button class="minus">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="menu-item" data-name="Papa Burger" data-price="12.00">
+                <div class="item-info">
+                    <h3>The Papa Burger</h3>
+                    <p>Double meat, double cheese, flame-kissed.</p>
+                </div>
+                <div class="item-controls">
+                    <span class="price">$12.00</span>
+                    <div class="stepper">
+                        <button class="minus">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus">+</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section id="cart-section" class="cart-box">
+            <h3>Order Summary</h3>
+            <div class="calc-line">Subtotal: <span id="subtotal">$0.00</span></div>
+            <div class="calc-line">Tax (Maysville 9.25%): <span id="tax-amount">$0.00</span></div>
+            <div class="total-line">Total: <span id="grand-total">$0.00</span></div>
+            <button class="order-btn">Submit Order to Grill</button>
+        </section>
+    </main>
+
+    <script>
+        // MOBILE MENU TOGGLE
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        // CALCULATOR LOGIC
+        const TAX_RATE = 0.0925;
+        let cart = {};
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            const name = item.getAttribute('data-name');
+            const price = parseFloat(item.getAttribute('data-price'));
+            const qtyLabel = item.querySelector('.qty');
+
+            item.querySelector('.plus').onclick = () => {
+                cart[name] = (cart[name] || 0) + 1;
+                update();
+            };
+
+            item.querySelector('.minus').onclick = () => {
+                if(cart[name] > 0) {
+                    cart[name]--;
+                    update();
+                }
+            };
+
+            function update() {
+                qtyLabel.innerText = cart[name] || 0;
+                let sub = 0;
+                Object.keys(cart).forEach(key => {
+                    const p = parseFloat(document.querySelector(`[data-name="${key}"]`).getAttribute('data-price'));
+                    sub += cart[key] * p;
+                });
+                
+                const tax = sub * TAX_RATE;
+                document.getElementById('subtotal').innerText = `$${sub.toFixed(2)}`;
+                document.getElementById('tax-amount').innerText = `$${tax.toFixed(2)}`;
+                document.getElementById('grand-total').innerText = `$${(sub + tax).toFixed(2)}`;
+            }
+        });
+    </script>
+</body>
+</html>
