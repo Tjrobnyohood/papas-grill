@@ -9,26 +9,24 @@
 </head>
 <body>
 
-<div class="menu-wrapper">
-    <header>
+    <header class="static-header">
         <h1 class="cursive">Papa's Charcoal Grille</h1>
-        <p class="contact">Maysville, OK • 405-867-4880</p>
-        <div class="gold-divider"></div>
+        <p class="tagline">Flame-Grilled Excellence • 405-867-4880</p>
     </header>
 
-    <main id="menu-container">
-        </main>
+    <div class="menu-wrapper">
+        <main id="menu-container">
+            </main>
 
-    <section class="cart-footer">
-        <div class="calc-row">Subtotal: <span id="subtotal">$0.00</span></div>
-        <div class="calc-row">Tax (9.25%): <span id="tax">$0.00</span></div>
-        <div class="total-row">Total: <span id="total">$0.00</span></div>
-        <button class="order-btn" onclick="alert('Order submitted to the Grill!')">Submit Order</button>
-    </section>
-</div>
+        <section class="cart-footer">
+            <div class="calc-row">Subtotal: <span id="subtotal">$0.00</span></div>
+            <div class="calc-row">Tax (9.25%): <span id="tax">$0.00</span></div>
+            <div class="total-row">Total: <span id="total">$0.00</span></div>
+            <button class="order-btn" onclick="alert('Sent to the Grill!')">Submit Order</button>
+        </section>
+    </div>
 
 <script>
-// Every single item and price captured from the source image
 const menuData = [
     { category: "Salads", items: [
         { name: "Garden Salad", price: 6.99, desc: "Iceberg, Spring Mix, Tomato, Onion, Cheese, Croutons" },
@@ -36,63 +34,46 @@ const menuData = [
         { name: "Grilled Chicken Salad", price: 9.79 }
     ]},
     { category: "Sandwiches", items: [
-        { name: "Hamburger", price: 5.99 },
-        { name: "Cheeseburger", price: 6.99 },
-        { name: "Double Cheeseburger", price: 8.99 },
-        { name: "Double Bacon Cheeseburger", price: 10.79 },
-        { name: "Ranch Burger", price: 6.49 },
-        { name: "Chili Cheeseburger", price: 8.19 },
-        { name: "Chicken Wrap", price: 6.99 },
-        { name: "Crispy Chicken Sandwich", price: 6.99 },
-        { name: "Grilled Chicken Sandwich", price: 6.99 },
-        { name: "Grilled Cheese", price: 3.99 },
-        { name: "BLT (Bacon, Mayo, Lettuce, Tomato)", price: 5.49 },
-        { name: "Steak Sandwich", price: 8.19 }
+        { name: "Hamburger", price: 5.99 }, { name: "Cheeseburger", price: 6.99 },
+        { name: "Double Cheeseburger", price: 8.99 }, { name: "Double Bacon Cheeseburger", price: 10.79 },
+        { name: "Ranch Burger", price: 6.49 }, { name: "Chili Cheeseburger", price: 8.19 },
+        { name: "Chicken Wrap", price: 6.99 }, { name: "Crispy Chicken Sandwich", price: 6.99 },
+        { name: "Grilled Chicken Sandwich", price: 6.99 }, { name: "Grilled Cheese", price: 3.99 },
+        { name: "BLT", price: 5.49 }, { name: "Steak Sandwich", price: 8.19 }
     ]},
-    { category: "Extras & Add-Ons", items: [
-        { name: "Biscuit", price: 2.19 },
-        { name: "Gravy", price: 1.69 },
-        { name: "Jalapenos", price: 0.89 },
-        { name: "Cheese", price: 0.89 },
-        { name: "Chili", price: 1.19 },
-        { name: "Bacon", price: 1.99 },
-        { name: "Grilled Chicken Add-on", price: 2.19 },
-        { name: "Beef Patty Add-on", price: 2.99 }
+    { category: "Extras & Add-ons", items: [
+        { name: "Biscuit", price: 2.19 }, { name: "Gravy", price: 1.69 }, { name: "Jalapenos", price: 0.89 },
+        { name: "Cheese", price: 0.89 }, { name: "Chili", price: 1.19 }, { name: "Bacon", price: 1.99 },
+        { name: "Grilled Chicken", price: 2.19 }, { name: "Beef Patty", price: 2.99 }
     ]},
     { category: "Other Stuff", items: [
-        { name: "Chicken Fry Dinner", price: 10.99, desc: "Served w/ Fries, Tots, or Okra" },
-        { name: "Chicken Strips (5pc)", price: 7.79 },
-        { name: "Popcorn Chicken", price: 5.99 },
-        { name: "Burrito Meal", price: 6.99 },
-        { name: "Double Burrito Meal", price: 9.19 },
-        { name: "Chicken Quesadilla", price: 6.49 },
-        { name: "Mexican Delight", price: 8.19 },
-        { name: "Chili Bowl", price: 5.49 },
-        { name: "Spicy Cheese Curds", price: 4.99 }
+        { name: "Chicken Fry Dinner", price: 10.99, desc: "w/ Fries, Tots, or Okra" },
+        { name: "Chicken Strips (5pc)", price: 7.79 }, { name: "Popcorn Chicken", price: 5.99 },
+        { name: "Burrito Meal", price: 6.99 }, { name: "Double Burrito Meal", price: 9.19 },
+        { name: "Mexican Delight", price: 8.19 }, { name: "Frito Chili Pie", price: 6.99 },
+        { name: "Chili Bowl", price: 5.49 }, { name: "Spicy Cheese Curds", price: 4.99 }
     ]},
     { category: "Sides", items: [
-        { name: "French Fries", price: 3.59 },
-        { name: "Tater Tots", price: 3.59 },
-        { name: "Onion Rings", price: 4.59 },
-        { name: "Fried Okra", price: 3.49 },
-        { name: "Texas Toothpick", price: 4.99 },
-        { name: "Cheese Fries or Tater Tots", price: 4.99 },
-        { name: "Chili Cheese Fries", price: 6.49 },
-        { name: "Chicken Cheese Fries", price: 7.49 },
+        { name: "French Fries", price: 3.59 }, { name: "Tater Tots", price: 3.59 },
+        { name: "Onion Rings", price: 4.59 }, { name: "Fried Okra", price: 3.49 },
+        { name: "Texas Toothpick", price: 4.99 }, { name: "Cheese Fries or Tater Tots", price: 4.99 },
+        { name: "Chili Cheese Fries", price: 6.49 }, { name: "Chicken Cheese Fries", price: 7.49 },
         { name: "Chicken Chili Cheese Fries", price: 9.99 }
     ]},
-    { category: "Drinks", items: [
-        { name: "Soft Drinks & Iced Tea", price: 2.99 }
-    ]}
+    { category: "Drinks", items: [ { name: "Soft Drinks & Iced Tea", price: 2.99 } ]}
 ];
 
 let cart = {};
-const TAX_RATE = 0.0925; // 9.25%
+const TAX_RATE = 0.0925;
 
 function renderMenu() {
     const container = document.getElementById('menu-container');
     menuData.forEach(sec => {
-        let html = `<h2 class="section-cursive">${sec.category}</h2>`;
+        // This wraps each category in a Hero-style card
+        let html = `<div class="category-hero-card">
+                        <h2 class="section-cursive-italic">${sec.category}</h2>
+                        <div class="item-list">`;
+        
         sec.items.forEach(item => {
             const safeId = item.name.replace(/[^a-zA-Z0-9]/g, '');
             html += `
@@ -111,6 +92,7 @@ function renderMenu() {
                     </div>
                 </div>`;
         });
+        html += `</div></div>`;
         container.innerHTML += html;
     });
 }
@@ -119,7 +101,6 @@ function changeQty(name, delta, price) {
     const safeId = name.replace(/[^a-zA-Z0-9]/g, '');
     cart[name] = (cart[name] || 0) + delta;
     if (cart[name] < 0) cart[name] = 0;
-    
     document.getElementById(`qty-${safeId}`).innerText = cart[name];
     calculate();
 }
