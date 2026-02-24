@@ -1,175 +1,107 @@
-/* Color Palette: Deep Charcoal and Gold Accent */
 :root {
     --gold: #c5a059;
-    --dark-bg: #0d0d0d;
-    --card-bg: #141414;
-    --text-light: #e5e5e5;
-    --text-dim: #888;
+    --dark: #0a0a0a;
+    --accent: #141414;
+    --text: #e0e0e0;
+    /* Extended shadow for that deep, premium look */
+    --ext-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(197, 160, 89, 0.2);
 }
 
 body {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
+    background-color: var(--dark);
+    color: var(--text);
     font-family: 'Lato', sans-serif;
     margin: 0;
-    padding: 20px;
-    line-height: 1.6;
+    padding-top: 140px;
 }
 
-.menu-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    border: 1px solid var(--gold);
-    padding: 40px;
-    background: var(--card-bg);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-header {
+.static-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.98);
+    border-bottom: 1px solid var(--gold);
+    z-index: 1000;
     text-align: center;
-    margin-bottom: 50px;
+    padding: 20px 0;
+    /* Added subtle box shadow to the header bar */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.9);
 }
 
 .cursive {
     font-family: 'Great Vibes', cursive;
     color: var(--gold);
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     margin: 0;
-    font-weight: normal;
+    /* Extended Shadow Applied Here */
+    text-shadow: var(--ext-shadow);
 }
 
-.contact {
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-}
-
-.gold-divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 25px 0;
-}
-
-/* Section Cursive Headers */
+/* Italicized Category Headers */
 .section-cursive {
     font-family: 'Great Vibes', cursive;
     color: var(--gold);
-    font-size: 2.8rem;
+    font-size: 3rem;
     text-align: center;
-    margin: 45px 0 20px 0;
-    font-weight: normal;
+    margin-top: 60px;
+    font-style: italic; /* Requested italicization */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Menu Item Layout */
+.menu-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 20px 150px 20px;
+}
+
+/* Hero Cards with Extended Depth */
+.hero-card {
+    flex: 1;
+    background: var(--accent);
+    border: 1px solid #222;
+    padding: 30px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5); /* Extended Shadow */
+    transition: all 0.3s ease;
+}
+
+.hero-card:hover { 
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
 .menu-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #222;
+    padding: 18px 0;
+    border-bottom: 1px solid #1a1a1a;
 }
 
-.item-details { flex: 1; padding-right: 20px; }
-
-.item-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-}
-
-.item-desc {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    font-style: italic;
-    margin: 4px 0 0 0;
-}
-
-/* Controls and Price */
-.item-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.price {
-    color: var(--gold);
-    font-weight: bold;
-    font-size: 1.1rem;
-    min-width: 60px;
-    text-align: right;
+.item-name { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
 .stepper {
     display: flex;
-    align-items: center;
     background: #1a1a1a;
     border: 1px solid #333;
     border-radius: 4px;
-    overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
-.stepper button {
-    background: none;
-    border: none;
-    color: var(--gold);
-    padding: 8px 14px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background 0.2s;
-}
-
-.stepper button:hover { background: #222; }
-
-.stepper span {
-    padding: 0 5px;
-    min-width: 25px;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Checkout Section */
 .cart-footer {
-    margin-top: 60px;
-    padding: 30px;
-    border: 1px solid var(--gold);
-    background: #0a0a0a;
-    text-align: right;
-}
-
-.calc-row {
-    font-size: 1rem;
-    color: var(--text-dim);
-    margin-bottom: 5px;
-}
-
-.total-row {
-    font-size: 2.2rem;
-    color: var(--gold);
-    font-family: 'Playfair Display', serif;
-    margin-top: 15px;
-}
-
-.order-btn {
-    background: var(--gold);
-    color: #000;
-    border: none;
-    padding: 15px 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 25px;
-    cursor: pointer;
-    transition: transform 0.1s;
-}
-
-.order-btn:active { transform: scale(0.98); }
-
-/* Responsive adjustments for phone screens */
-@media (max-width: 600px) {
-    .menu-wrapper { padding: 15px; }
-    .cursive { font-size: 3rem; }
-    .menu-item { flex-direction: column; align-items: flex-start; }
-    .item-actions { width: 100%; justify-content: space-between; margin-top: 10px; }
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #0d0d0d;
+    border-top: 1px solid var(--gold);
+    padding: 20px 0;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.8);
 }
